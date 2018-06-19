@@ -1,0 +1,19 @@
+<div class="slideshow"><div class="container" >
+  <div id="myCarousel" class="carousel slide" data-ride="carousel">
+    
+      
+    <div class="carousel-inner">
+      <div class="item active">
+        <img [src]="selectedImage" alt="Image" class="imgslide" >
+      </div>
+    </div>
+
+      <button  (click)="prev()"  class="left carousel-control" style="border:none;" *ngIf="imageIndex != 0"><span class="glyphicon glyphicon-chevron-left" ></span></button>
+      <ol class="carousel-indicators">
+        <span class= index>{{ slide }} / {{ totalSlides }}</span>
+        </ol>
+      <button  (click)="next()"  class= "right carousel-control"style="border:none;" *ngIf="imageIndex != imagefileNames.length-1" ><span class="glyphicon glyphicon-chevron-right"></span></button>
+  </div>
+
+</div>
+</div>

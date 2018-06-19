@@ -1,0 +1,113 @@
+body{
+    overflow: hidden !important;
+}
+
+.container-fluid{
+    background-color :orange;
+    width:100%;
+    align-items:center;
+    border-radius: 1.0em;
+  
+}
+
+
+
+.header{
+    background-image: url("/assets/header-image.png");
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
+    display:flex;
+    padding:-5em;
+    height: 13em; 
+    width: 100%;
+    justify-content: space-between;
+    align-items: center
+    
+}
+.logo1{
+    padding-left: 1em;
+    width:12%;
+    padding-bottom: 1em;
+    
+}
+.lockup1{
+  
+width: 15%;
+margin-right: 2%;
+height: 60%;
+
+ 
+}
+#banner{
+    color: white;
+    padding-left: 0.5em;
+    font-size: 4em;
+   
+    width:40%;
+    display: inline-block;
+    color: white;
+    font-size: 2em;
+    width: 35%;
+    display: inline-block;
+   
+    padding-left: 8em
+}
+.navbar-brand{
+    padding-right: 2em;
+    color:white
+    
+}
+.navbar{
+    border:0px;
+    margin:55px 93px 25px 93px;
+}    
+
+.navbar-inverse{
+  
+   border-radius: 20px
+}
+nav.container ul {
+    width: 100%;
+    color: white;
+
+}
+
+.navbar-brand{
+    padding:0.9em
+    
+
+}
+.nav{
+    color: white
+}
+
+@media screen and (max-width:415px){
+    #banner{
+       width:40%;
+       padding-left: 1.3em; 
+        font-size: 1em;
+     }
+     .logo1{
+         
+         padding-left: 3em;
+         width:25%
+     }
+     .lookup1{
+         margin-right: 5%;
+         height:50%;
+         width:25%;
+     }
+     header{
+         height:10em
+     }
+} 
+
+.navbar-default .navbar-nav>li>a{
+    color: white;
+}
+
+.navbar-default .navbar-nav>li>a.active{
+    border: 1px solid #804000 ;
+    background-color: #b35900;
+}
+

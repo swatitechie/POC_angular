@@ -1,0 +1,35 @@
+/* .Down{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    
+
+    ;
+}      */
+/*.pdf{
+    display: inline-block;
+    padding: 0.5em 0.2em;
+    border: solid 2px orange;
+    background-color: orange;
+    border-radius: 8px;  
+    margin-right:16px;
+    color:white;
+}
+
+.img{
+    display: inline-block;
+    padding: 0.5em 0.2em;
+    border: solid 2px orange;
+    background-color: orange;
+    color:white;
+    border-radius: 8px; 
+} */ 
+/* .divborder {
+    height:500px;
+    width:250px;
+} */
+.pdF{
+
+    width:800px;
+    height:2100px
+}

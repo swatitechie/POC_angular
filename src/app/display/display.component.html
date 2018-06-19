@@ -1,0 +1,19 @@
+<div>
+  <div align="center" *ngIf="(files != undefined)">
+    <label>Uploaded Files..</label>
+    <ul>
+      <li *ngFor="let file of uploadedFiles; let i = index">{{file.name}} <span></span></li>
+    </ul>
+  </div>
+</div> 
+
+<div class="network text-center" alt="pdf"></div> 
+<div class="divborder text-center" *ngIf="pdfcomponent">
+
+  <div>
+     <object [data]="cleanURL(pdfSrc)" type="application/pdf" class="pdF" ></object></div>
+  </div> 
+ 
+  <app-slideshow *ngIf= "slideComponent"></app-slideshow>
+  
+  

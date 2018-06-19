@@ -1,0 +1,45 @@
+<div class="container" *ngIf="!spinner">
+    <div align="center">
+      <div class="row" >
+        <div class="col-md-4"></div>
+           <div class="col-md-2">
+                                
+            <div class="upload-btn-wrapper">
+              <button type="button" class="btn btn-primary btn-md">Add File</button>
+              <input class="btn btn-primary btn-md" type="file" #fileInput accept=".pdf" (change)="uploadFile()"/>
+             </div> 
+                                    
+           </div>
+          
+           <div class="col-md-2">
+              <button type="button" class="uploadButton" (click)="uploadFiles()"> Upload </button> 
+            </div> 
+         <div class="col-md-4"></div>
+                            
+        
+       </div> 
+       <table class= "list" > 
+          <div  *ngIf="success" class="suc"><br>
+              <label >Files have been uploaded Successfully.</label>
+            </div>      
+            <td *ngFor="let file of files; let i = index">{{file.name}} <button (click)="removeFile(i)" class="remove">Cancel</button></td>
+      </table>
+
+      
+    </div>
+    <!-- <app-display [baseStrings]="baseString"></app-display> -->
+  </div>
+
+
+
+  <div *ngIf="spinner" class="spin">
+<img src="assets/loading.gif"/>
+    
+  </div>                
+   
+  
+  
+                    
+            
+      
+        

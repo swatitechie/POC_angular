@@ -1,0 +1,20 @@
+
+{
+    "pdfDetails": {
+        "filename": "sample_test2.pdf",
+        "size": 54836,
+        "location": "D:/NewITExpertWeb/PDF_To_Image_Output/sample_test2",
+        "images": [
+            "https://newitexdev.accenture.com/PDF_To_Image_Output/sample_test2/Image_1.jpg",
+            "https://newitexdev.accenture.com/PDF_To_Image_Output/sample_test2/Image_10.jpg",
+            "https://newitexdev.accenture.com/PDF_To_Image_Output/sample_test2/Image_2.jpg",
+            "https://newitexdev.accenture.com/PDF_To_Image_Output/sample_test2/Image_3.jpg",
+            "https://newitexdev.accenture.com/PDF_To_Image_Output/sample_test2/Image_4.jpg",
+            "https://newitexdev.accenture.com/PDF_To_Image_Output/sample_test2/Image_5.jpg",
+            "https://newitexdev.accenture.com/PDF_To_Image_Output/sample_test2/Image_6.jpg",
+            "https://newitexdev.accenture.com/PDF_To_Image_Output/sample_test2/Image_7.jpg",
+            "https://newitexdev.accenture.com/PDF_To_Image_Output/sample_test2/Image_8.jpg",
+            "https://newitexdev.accenture.com/PDF_To_Image_Output/sample_test2/Image_9.jpg"
+        ]
+    }
+}
