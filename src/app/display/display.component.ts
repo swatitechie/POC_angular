@@ -4,6 +4,7 @@ import { HttpClient } from '@angular/common/http';
 import {DomSanitizer, SafeUrl} from '@angular/platform-browser';
 //import {Observable} from "rxjs/Observable";
 import { SlideshowComponent }  from '../slideshow/slideshow.component';
+
 import { UploadDisplayService } from '../upload-display.service';
 
 
@@ -24,29 +25,24 @@ export class DisplayComponent implements OnInit {
               ) { 
                
   }
+ 
   pdfSrc: string ;
   downlink : any = navigator.connection.downlink;
   images:string[];
-  // @Input() baseStrings:string[] ;
   public slideComponent:boolean;
   public pdfcomponent;
 
   ngOnInit() {
-    
-  //console.log("HI**********************"+JSON.stringify(this.baseStrings));
-    this.isDisabled();
-    
+    this.isDisabled();    
     this.displayService.getImages()
       .then((data)=>{ 
-          this. pdfSrc = data.pdfDetails.filenames;
+          this.pdfSrc = data.pdfDetails.location;
           console.log(navigator.connection.downlink);
       });
-    }
+  }
 
   isDisabled(){
-  
-    if(navigator.connection.downlink < 7){
-      
+    if(navigator.connection.downlink < 15){
       this.pdfcomponent =  false;
       this.slideComponent=true;
     }
@@ -62,7 +58,7 @@ export class DisplayComponent implements OnInit {
 
   
   cleanURL(oldURL ): SafeUrl{
-
+    console.log(oldURL);
     return this.sanitizer.bypassSecurityTrustResourceUrl(oldURL);
 
   }

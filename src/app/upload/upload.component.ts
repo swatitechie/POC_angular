@@ -4,7 +4,7 @@ import { ConstantService } from '../constant.service';
 import { observable } from 'rxjs';
 import { Router } from '@angular/router';
 
-declare var navigator;
+// declare var navigator;
 
 
 @Component({
@@ -27,6 +27,7 @@ export class UploadComponent implements OnInit {
   files: any[];
   base64FilesString: string[];
   data: any;
+  fileName : string;
   spinner: boolean =false;//by default we are taking spinner false 
   success: boolean = false;
    baseString:string[];
@@ -37,12 +38,15 @@ export class UploadComponent implements OnInit {
 //for adding file uploadFile() is used & after adding file one by one selected file pushed in the file array 
   uploadFile() {
     let file = this.fileInput.nativeElement.files[0];
+    this.fileName = this.fileInput.nativeElement.files[0].name;
+    console.log()
     if (this.files == undefined) {
       this.files = [];
       this.files.push(file);
     } else {
       this.files.push(file);
     }
+    console.log(this.fileName);
   }
   
    
@@ -59,12 +63,9 @@ uploadFiles() {
 
 
         this.spinner =true;//before geting response
-        this.uploadDisplayService.postApi(url, requestPayload).subscribe((res) => {
-         console.log(res);
-      
-        this.spinner=false ; //after geting response
-        //this.router.navigate(['display']);
-        
+        this.uploadDisplayService.postApi(url, requestPayload,this.fileName).subscribe((res) => {
+         console.log(res);      
+        this.spinner=false ;         
         this.success = true;
         console.log(res);
         
