@@ -6,6 +6,7 @@ import {DomSanitizer, SafeUrl} from '@angular/platform-browser';
 import { SlideshowComponent }  from '../slideshow/slideshow.component';
 
 import { UploadDisplayService } from '../upload-display.service';
+import { Subscription } from 'rxjs';
 
 
 declare var navigator;
@@ -26,7 +27,8 @@ export class DisplayComponent implements OnInit {
                
   }
  
-  pdfSrc: string ;
+  pdfSrc : string;
+  pdfFileSub : Subscription;
   downlink : any = navigator.connection.downlink;
   images:string[];
   public slideComponent:boolean;
@@ -34,15 +36,19 @@ export class DisplayComponent implements OnInit {
 
   ngOnInit() {
     this.isDisabled();    
-    this.displayService.getImages()
-      .then((data)=>{ 
-          this.pdfSrc = data.pdfDetails.location;
-          console.log(navigator.connection.downlink);
-      });
+    // this.displayService.getImages()
+    //   .then((data)=>{ 
+    //       this.pdfSrc = data.pdfDetails.location;
+    //       console.log(navigator.connection.downlink);
+    //   });
+    this.pdfFileSub = this.displayService.fileNameSub.subscribe((fn)=>{
+      this.pdfSrc = fn;
+      console.log(fn);
+    });
   }
 
   isDisabled(){
-    if(navigator.connection.downlink < 15){
+    if(navigator.connection.downlink < 1){
       this.pdfcomponent =  false;
       this.slideComponent=true;
     }

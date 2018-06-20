@@ -3,6 +3,7 @@ import { Http,Response } from '@angular/http';
 import { HttpClientModule } from '@angular/common/http';
 import { HttpClient } from '@angular/common/http';
 import { UploadDisplayService } from 'src/app/upload-display.service';
+import { BehaviorSubject } from 'rxjs';
 
 //import { UploadComponent } from './upload/upload.component';
 //import { UploadDisplayService } from './upload-display.service';
@@ -11,24 +12,19 @@ import { UploadDisplayService } from 'src/app/upload-display.service';
   providedIn: 'root'
 })
 export class DisplayService {
-  
-
-
-
   private url : string = 'https://newitexdev.accenture.com/PdfToImageAPI/fetch/?filename=';
   private Url : string= "https://newitexdev.accenture.com/PdfToImageAPI/fetchPDFList";
-  fileName:string;
+  private fileName = new BehaviorSubject<string>('');
+  fileNameSub = this.fileName.asObservable();
 
   constructor(private http:HttpClient,private uploadDisplayService: UploadDisplayService) { }
   
-  getFilename():string{
-    console.log("!!!!!!!!!!!!");
-    return this.fileName;   
+  getFilename():string{    
+    return this.fileName.getValue();   
   }
 
-  setFilename(fn : string):void{
-    console.log("&&&&&&&&&&&&&");
-    this.fileName = fn;
+  setFilename(fn : string):void{    
+    this.fileName.next(fn);
   }
 
   getImages(){
