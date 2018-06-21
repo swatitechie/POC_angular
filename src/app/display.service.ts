@@ -16,25 +16,32 @@ export class DisplayService {
   private Url : string= "https://newitexdev.accenture.com/PdfToImageAPI/fetchPDFList";
   private fileName = new BehaviorSubject<string>('');
   fileNameSub = this.fileName.asObservable();
-
+  
+  
+  
   constructor(private http:HttpClient,private uploadDisplayService: UploadDisplayService) { }
   
-  getFilename():string{    
-    return this.fileName.getValue();   
-  }
+  // getFilename():string{    
+  //   return this.fileName.getValue();   
+  // }
 
   setFilename(fn : string):void{    
     this.fileName.next(fn);
   }
+  // setImageName(FIn:string):void{
+  //   this.fileName.next(FIn)
+  // }
 
   getImages(){
     return fetch(this.url+this.uploadDisplayService.getFileName())
-      .then((response)=>{
+   .then((response)=>{
         return response.json();
       });
+     
   }
 
-  getImages2(filename : string){
+
+  getPdf(filename : string){
     return fetch(this.url+filename)
       .then((response)=>{
         return response.json();

@@ -15,7 +15,7 @@ export class SlideshowComponent implements OnInit {
   private imageIndex:number=0;
   slide:number=1;
   totalSlides:number;
- 
+
   
   constructor(private displayService :DisplayService) { }
   ngOnInit() {
@@ -28,14 +28,16 @@ export class SlideshowComponent implements OnInit {
             // ];
 
             //this.isDisabled();
-
+            
+ 
     this.displayService.getImages()
-      .then((data)=>{     
-          this.imagefileNames = data.pdfDetails.images;
+      .then((data)=>{    
+        this.imagefileNames = data.pdfDetails.images;
           this.selectedImage = this.imagefileNames[this.imageIndex];
           this.totalSlides = this.imagefileNames.length;
       
           });
+      
       }
   
   

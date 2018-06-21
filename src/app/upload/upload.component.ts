@@ -25,7 +25,7 @@ export class UploadComponent implements OnInit {
   //files array for pdf files array
   //base64FileString for base64 format file
   files: any[];
-  base64FilesString: string[];
+  // base64FilesString: string[];
   data: any;
   fileName : string;
   spinner: boolean =false;//by default we are taking spinner false 

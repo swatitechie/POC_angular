@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { DisplayService } from '../display.service';
 import { HttpClient } from '@angular/common/http';
+import { UploadDisplayService } from '../upload-display.service';
 @Component({
   selector: 'app-list',
   templateUrl: './list.component.html',
@@ -8,10 +9,11 @@ import { HttpClient } from '@angular/common/http';
 })
 export class ListComponent implements OnInit {
 
-  pdfSrc;
+ // pdfSrc;
   private pdfDetails=[];
 
-  constructor(private displayService:DisplayService, 
+  constructor(private displayService:DisplayService,
+    private uploadDisplayService : UploadDisplayService ,
     private http : HttpClient) {  }
     
 
@@ -23,9 +25,10 @@ export class ListComponent implements OnInit {
   }
   
   selectfile(pdf){
-    this.displayService.getImages2(pdf)
+    this.uploadDisplayService.fileName = pdf;
+    this.displayService.getPdf(pdf)
     .then((data)=>{ 
-      this.pdfSrc = data.pdfDetails.location;
+     // this.pdfSrc = data.pdfDetails.location;
       this.displayService.setFilename(data.pdfDetails.location);  
     });
     

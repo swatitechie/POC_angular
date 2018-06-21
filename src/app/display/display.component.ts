@@ -41,6 +41,8 @@ export class DisplayComponent implements OnInit {
     //       this.pdfSrc = data.pdfDetails.location;
     //       console.log(navigator.connection.downlink);
     //   });
+   
+    
     this.pdfFileSub = this.displayService.fileNameSub.subscribe((fn)=>{
       this.pdfSrc = fn;
       console.log(fn);
@@ -48,7 +50,7 @@ export class DisplayComponent implements OnInit {
   }
 
   isDisabled(){
-    if(navigator.connection.downlink < 1){
+    if(navigator.connection.downlink < 15){
       this.pdfcomponent =  false;
       this.slideComponent=true;
     }

@@ -25,27 +25,23 @@ export class UploadDisplayService {
   // posting base64 format files over url
   postApi(url, base64FilesString, fileName) {
     this.fileName=fileName;
-  console.log(base64FilesString);
+    console.log(base64FilesString);
     //apiUrl variable stores one changable url(url) and constand/public url(URLString) 
-    let apiUrl=url+this.URLString;
-    let requestPayload={
-     "filename":fileName,
-     "binary":base64FilesString[0].split(",")[1]
-    };
+      let apiUrl=url+this.URLString;
+      let requestPayload={
+          "filename":fileName,
+          "binary":base64FilesString[0].split(",")[1]
+      };
     console.log(fileName);
     
     return this.httpClient.post(apiUrl,requestPayload);
-     
-    
+  
   }
   getFileName():string{
     return this.fileName;
   }
+  
     
-newFunction() {
-  var navigator: any;
-  return navigator;
- }
 
 
   logNetworkInfo() {
