@@ -29,7 +29,8 @@ export class ListComponent implements OnInit {
     this.displayService.getPdf(pdf)
     .then((data)=>{ 
      // this.pdfSrc = data.pdfDetails.location;
-      this.displayService.setFilename(data.pdfDetails.location);  
+      this.displayService.setFilename(data.pdfDetails.location);
+      this.displayService.setImageLocations(data.pdfDetails.images)  
     });
     
 

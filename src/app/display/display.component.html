@@ -12,8 +12,9 @@
 <!-- <div *ngif=!list> -->
 <div class="network text-center" alt="pdf"></div> 
 <div class="divborder text-center" *ngIf="pdfcomponent">
-<div>
-     <object [data]="cleanURL(pdfSrc)" type="application/pdf" class="pdF" ></object></div>
-  </div> 
+  <div>
+     <object [data]="cleanURL(pdfSrc)" type="application/pdf" class="pdF" ></object>
+  </div>
+</div> 
  
   <app-slideshow *ngIf= "slideComponent" ></app-slideshow>

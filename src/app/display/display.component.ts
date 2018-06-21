@@ -1,4 +1,4 @@
-import { Component, OnInit ,Input} from '@angular/core';
+import { Component, OnInit ,Input, OnDestroy} from '@angular/core';
 import { DisplayService } from '../display.service';
 import { HttpClient } from '@angular/common/http';
 import {DomSanitizer, SafeUrl} from '@angular/platform-browser';
@@ -17,7 +17,7 @@ declare var navigator;
   styleUrls: ['./display.component.css'],
 
 })
-export class DisplayComponent implements OnInit {
+export class DisplayComponent implements OnInit,OnDestroy {
 
 
   constructor(private displayService:DisplayService, 
@@ -45,7 +45,7 @@ export class DisplayComponent implements OnInit {
     
     this.pdfFileSub = this.displayService.fileNameSub.subscribe((fn)=>{
       this.pdfSrc = fn;
-      console.log(fn);
+     // console.log(fn);
     });
   }
 
@@ -56,7 +56,6 @@ export class DisplayComponent implements OnInit {
     }
     else
     {
-      
       this.pdfcomponent=true;
       this.slideComponent=false;
     }
@@ -66,11 +65,13 @@ export class DisplayComponent implements OnInit {
 
   
   cleanURL(oldURL ): SafeUrl{
-    console.log(oldURL);
+  //  console.log(oldURL);
     return this.sanitizer.bypassSecurityTrustResourceUrl(oldURL);
 
   }
-  
+  ngOnDestroy(){
+    this.pdfFileSub.unsubscribe();
+  }
 }
 
  
