@@ -1,8 +1,8 @@
 import { Injectable } from '@angular/core';
-import { Http,Response } from '@angular/http';
+import { Response } from '@angular/http';
 import { HttpClientModule } from '@angular/common/http';
 import { HttpClient } from '@angular/common/http';
-import { UploadDisplayService } from 'src/app/upload-display.service';
+// import { UploadDisplayService } from 'src/app/upload-display.service';
 import { BehaviorSubject } from 'rxjs';
 
 //import { UploadComponent } from './upload/upload.component';
@@ -19,7 +19,7 @@ export class DisplayService {
   private imageLocations = new BehaviorSubject<string []>([]);
   imageLocationsSub = this.imageLocations.asObservable();
 
-  constructor(private http:HttpClient,private uploadDisplayService: UploadDisplayService) { }
+  constructor() { }
   
 
 
