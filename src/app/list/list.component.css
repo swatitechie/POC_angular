@@ -1,4 +1,25 @@
-.list{
+
+.list-group{
     text-align: center;
     font-size: 1.5em;
+}
+
+
+.pdflist .mat-card{
+    margin: 40px 250px 0px 250px;
+    overflow-y: scroll;
+    height: 30em;
+    border-collapse: collapse
+}
+
+
+
+.pdflist .mat-card-title{
+    color: black;
+    text-align: center;
+    border: 1px solid #EAEAEA;
+    margin: 15px 250px -38px 250px;
+    padding: 20px;
+    font-family: 'graphik-medium';
+    font-size: 15px
 }

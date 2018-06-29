@@ -18,6 +18,9 @@ describe('UploadComponent', () => {
     component = fixture.componentInstance;
     fixture.detectChanges();
   });
+  describe ("uploadFile()",() => {
+    
+  })
 
   it('should create', () => {
     expect(component).toBeTruthy();

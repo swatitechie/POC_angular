@@ -2,9 +2,7 @@ import { Component, OnInit ,Input, OnDestroy} from '@angular/core';
 import { DisplayService } from '../display.service';
 import { HttpClient } from '@angular/common/http';
 import {DomSanitizer, SafeUrl} from '@angular/platform-browser';
-//import {Observable} from "rxjs/Observable";
 import { SlideshowComponent }  from '../slideshow/slideshow.component';
-
 import { UploadDisplayService } from '../upload-display.service';
 import { Subscription } from 'rxjs';
 
@@ -27,49 +25,59 @@ export class DisplayComponent implements OnInit,OnDestroy {
                
   }
  
+  toggleSlideShow : boolean = false;
   pdfSrc : string;
   pdfFileSub : Subscription;
   downlink : any = navigator.connection.downlink;
   images:string[];
   public slideComponent:boolean;
   public pdfcomponent;
-
+  pdfSize :number;
+  
   ngOnInit() {
-    this.isDisabled();    
-    // this.displayService.getImages()
-    //   .then((data)=>{ 
-    //       this.pdfSrc = data.pdfDetails.location;
-    //       console.log(navigator.connection.downlink);
-    //   });
-   
-    
+    console.log(navigator.connection.downlink);
+    //this.isDisabled();    
+
     this.pdfFileSub = this.displayService.fileNameSub.subscribe((fn)=>{
       this.pdfSrc = fn;
-     // console.log(fn);
-    });
-  }
 
-  isDisabled(){
-    if(navigator.connection.downlink < 15){
+    });
+   
+    
+
+  }
+  toggleSlideshow(pdfSize){
+    this.toggleSlideShow = true;
+    this.pdfSize=pdfSize;
+    this.isDisabled(pdfSize);
+  }
+  backToList(){
+    this.toggleSlideShow = false;
+  }
+  isDisabled(fileSize : number){
+  // console.log(fileSize);
+  let timeinSec= fileSize/ (131072* navigator.connection.downlink)
+console.log(timeinSec)
+    if(timeinSec >=5)
+  {
       this.pdfcomponent =  false;
-      this.slideComponent=true;
-    }
+       this.slideComponent=true;
+      }
     else
-    {
+        {
       this.pdfcomponent=true;
       this.slideComponent=false;
-    }
+      }
 
     
   }
 
-  
-  cleanURL(oldURL ): SafeUrl{
-  //  console.log(oldURL);
-    return this.sanitizer.bypassSecurityTrustResourceUrl(oldURL);
 
-  }
-  ngOnDestroy(){
+cleanURL(oldURL ): SafeUrl{
+    return this.sanitizer.bypassSecurityTrustResourceUrl(oldURL);
+     }
+  
+   ngOnDestroy(){
     this.pdfFileSub.unsubscribe();
   }
 }

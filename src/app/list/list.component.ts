@@ -1,7 +1,8 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 import { DisplayService } from '../display.service';
 import { HttpClient } from '@angular/common/http';
 import { UploadDisplayService } from '../upload-display.service';
+
 @Component({
   selector: 'app-list',
   templateUrl: './list.component.html',
@@ -9,32 +10,41 @@ import { UploadDisplayService } from '../upload-display.service';
 })
 export class ListComponent implements OnInit {
 
- // pdfSrc;
+  @Output() slideshowMode =  new EventEmitter();
+
   private pdfDetails=[];
+  pdfSize:number;
 
   constructor(private displayService:DisplayService,
-    private uploadDisplayService : UploadDisplayService ,
-    private http : HttpClient) {  }
+              private uploadDisplayService : UploadDisplayService ,
+              private http : HttpClient) {  }
     
 
   ngOnInit() {
     this.displayService.getPdfList()
-    .then((data)=>{
-      this.pdfDetails=data.pdfDetails;
-     });
-  }
+      .then((data)=>{
+        this.pdfDetails=data.pdfDetails;
+        this.pdfDetails = data.pdfDetails.PDFList;
+        let pdfname: any= [];
+        this.pdfDetails.forEach((name) => {
+          if(name.indexOf('.pdf') > 0){
+            pdfname.push(name);
+          }
+        });
+        this.pdfDetails = pdfname;
+  
+        });
+    }
   
   selectfile(pdf){
     this.uploadDisplayService.fileName = pdf;
     this.displayService.getPdf(pdf)
-    .then((data)=>{ 
-     // this.pdfSrc = data.pdfDetails.location;
-      this.displayService.setFilename(data.pdfDetails.location);
-      this.displayService.setImageLocations(data.pdfDetails.images)  
-    });
-    
+      .then((data)=>{ 
+        this.pdfSize=data.pdfDetails.size;
+        this.displayService.setFilename(data.pdfDetails.location);
+        this.displayService.setImageLocations(data.pdfDetails.images);
+        this.slideshowMode.emit(data.pdfDetails.size);  
+      });
 
   }
-
-
 }

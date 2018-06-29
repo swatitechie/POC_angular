@@ -21,9 +21,7 @@ export class DisplayService {
 
   constructor(private http:HttpClient,private uploadDisplayService: UploadDisplayService) { }
   
-  // getFilename():string{    
-  //   return this.fileName.getValue();   
-  // }
+
 
   setFilename(fn : string):void{    
     this.fileName.next(fn);
@@ -31,17 +29,7 @@ export class DisplayService {
   setImageLocations(images : string []) :void{
     this.imageLocations.next(images);
   }
-  // setImageName(FIn:string):void{
-  //   this.fileName.next(FIn)
-  // }
 
-  getImages(){
-    return fetch(this.url+this.uploadDisplayService.getFileName())
-      .then((response)=>{
-          return response.json();
-        });
-     
-  }
 
   getPdf(filename : string){
     return fetch(this.url+filename)
@@ -55,7 +43,7 @@ export class DisplayService {
     .then((res)=>{
     return res.json();
     })
-    // console.log(this.constfileName);
+    
   }
 
 

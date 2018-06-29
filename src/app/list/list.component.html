@@ -1,6 +1,9 @@
+<div class="container pdflist">
+    <mat-card-title class="listheader">PDF LIST</mat-card-title>
+        <mat-card>
+           <mat-card-content *ngFor="let pdf of pdfDetails" class="list-group-item" >  <a (click)="selectfile(pdf)"> {{pdf}}</a>
+             </mat-card-content>
+        </mat-card>
 
-<li *ngFor="let pdf of pdfDetails.PDFList" class="list"  >
-                
-        <a (click)="selectfile(pdf)"> {{pdf}}</a>
-
-</li>
+    <!-- <app-display [pdfname]="pdfSize"></app-display>] -->
+</div>

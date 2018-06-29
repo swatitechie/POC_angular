@@ -14,7 +14,8 @@ import { HttpClientModule } from '@angular/common/http';
 import { POCComponent } from './poc/poc.component';
 import { SlideshowComponent } from './slideshow/slideshow.component';
 import { ListComponent } from './list/list.component';
-
+import {MatCardModule} from '@angular/material/card';
+import {MatButtonModule} from '@angular/material/button';
 
 @NgModule({
   declarations: [
@@ -27,7 +28,8 @@ import { ListComponent } from './list/list.component';
   ],
   imports: [
   //  Ng4FilesModule,
-  
+  MatButtonModule,
+  MatCardModule,
     BrowserModule,
     MatSidenavModule,
     BrowserAnimationsModule,

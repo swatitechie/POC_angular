@@ -1,20 +1,20 @@
-<!-- <div *ngif=list> -->
-<app-list></app-list>
 
-<!-- <div>
-  <div align="center" *ngIf="(files != undefined)">
-    <label>Uploaded Files..</label>
-    <ul>
-      <li *ngFor="let file of uploadedFiles; let i = index">{{file.name}} <span></span></li>
-    </ul>
-  </div>
-</div>  -->
-<!-- <div *ngif=!list> -->
+<div>
+  <app-list (slideshowMode)="toggleSlideshow($event)" *ngIf="!toggleSlideShow"></app-list>
+</div>
+
+
+<div class="view">
 <div class="network text-center" alt="pdf"></div> 
-<div class="divborder text-center" *ngIf="pdfcomponent">
-  <div>
+ <div class="divborder text-center" *ngIf="pdfcomponent">
+  <div *ngIf="toggleSlideShow" (toggleList)="backToList()">
+      <button mat-button (click)="backToList()" class="Back">Back To List</button>
      <object [data]="cleanURL(pdfSrc)" type="application/pdf" class="pdF" ></object>
-  </div>
-</div> 
- 
-  <app-slideshow *ngIf= "slideComponent" ></app-slideshow>
+       <!-- <button mat-button (click)="backenable()"> BACK </button>  -->
+    </div>
+  </div> 
+  <div *ngIf="toggleSlideShow">
+      <app-slideshow *ngIf="slideComponent" (toggleList)="backToList()"></app-slideshow>
+  </div> 
+    
+</div>
